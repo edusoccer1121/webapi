@@ -1,0 +1,32 @@
+server:
+  port: 8082
+  servlet:
+    session:
+      timeout: 30m
+spring:
+  profiles:
+    active: local  # options: dev, local, qa, test, test2, prod
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+      FAIL_ON_EMPTY_BEANS: false
+      INDENT_OUTPUT: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+      enabled: true
+  origins:
+#    - '*'
+    - 'http://localhost:4200'
+info:
+  app:
+    name: @project.description@
+    version: @project.version@
+    java.version: @java.version@
